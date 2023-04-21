@@ -3,24 +3,29 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Product } from "../../app/models/product";
+import agent from "../../app/api/agent";
+import NotFound from "../../app/errors/NotFound";
+import LoadingComponent from "../../app/layout/LoadingComponent";
 
+//--adding a delay to the app(for simulation)
+const sleep = () => new Promise(resolve => setTimeout(resolve,500))
 
 export default function ProductDetails(){
-  const {id} = useParams();
+  const {id} = useParams<{id:string}>();
   const [product, setProduct] = useState<Product|null>(null)
   const [loading, setLoading]= useState(true)
 
   const url = `https://localhost:44379/api/products/${id}`
   useEffect(()=>{
     axios.get(url)
-    .then(response => setProduct(response.data))
-    .catch(error => console.log(error))
+    .then(async response =>{ await sleep(); setProduct(response.data)})
+    .catch(error => console.log(error.response))
     .finally(() => setLoading(false)) 
   },[id])
 
-  if(loading) return <h3>Loading...</h3>
+  if(loading) return <LoadingComponent message="Loading product..."/>
 
-  if(!product) return <h3>Product not found</h3>
+  if(!product) return <NotFound/>
 
     return(
         <>

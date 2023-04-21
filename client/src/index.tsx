@@ -4,6 +4,8 @@ import App from './app/layout/App';
 import './app/layout/index.css'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import {createBrowserHistory} from 'history'
+ 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
