@@ -14,7 +14,11 @@ namespace API.Data
               // 
         }
 
+        // Db context for products
         public DbSet<Product> Products { get; set; }
+
+        // Db context for baskets
+        public DbSet<Basket> Baskets { get; set; }
       
     }
 }
