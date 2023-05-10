@@ -52,7 +52,7 @@ namespace API.Controllers
             var product = await _context.Products.FindAsync(productId);
 
             //--checking if productId is null
-            if (product == null) return BadRequest(new ProblemDetails { Title='Product not found' });
+            if (product == null) return BadRequest(new ProblemDetails { Title= "Product not found" });
 
             // adding item to basket
             basket.AddItem(product, quantity);

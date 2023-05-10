@@ -67,7 +67,7 @@ namespace API
             {
                 //opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
                 opt.WithHeaders("Accept", "Content-Type", "Authorization")
-                .WithMethods("GET", "POST", "PUT", "DELETE").AllowCredentials().WithOrigins("http://localhost:3000");
+                .WithMethods("GET", "POST", "PUT", "DELETE").AllowCredentials().WithOrigins("http://localhost:3001");
 
             });
 
